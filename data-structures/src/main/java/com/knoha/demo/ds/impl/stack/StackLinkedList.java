@@ -1,5 +1,6 @@
 package com.knoha.demo.ds.impl.stack;
 
+import com.knoha.demo.ds.spi.List;
 import com.knoha.demo.ds.spi.Stack;
 
 /**
