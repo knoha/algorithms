@@ -4,6 +4,7 @@ import com.knoha.demo.ds.spi.Stack;
 
 /**
  * A stack implementation based on array.
+ * Not thread-safe.
  *
  * @author Kostiantyn Noha
  */
@@ -25,16 +26,15 @@ public class StackArray<T> implements Stack<T> {
 
     public T push(final T e) {
         if (size + 1 == data.length) {
-            final int newLength = data.length + DEFAULT_CAPACITY;
+            final int currentLength = data.length;
+            final int newLength = data.length + currentLength;
+
             final Object[] newData = new Object[newLength];
-
             System.arraycopy(data, 0, newData, 0, data.length);
-
             data = newData;
         }
 
-        data[size] = e;
-        size++;
+        data[size++] = e;
         return e;
     }
 
