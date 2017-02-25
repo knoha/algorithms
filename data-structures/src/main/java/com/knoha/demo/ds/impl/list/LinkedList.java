@@ -27,7 +27,7 @@ public class LinkedList<T> implements List<T> {
     }
 
     private void checkIndexInBounds(final int index) {
-        if (index < 0 || index > size) {
+        if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Index cannot be negative.");
         }
     }
@@ -46,7 +46,9 @@ public class LinkedList<T> implements List<T> {
             first = node;
             last = node;
         } else {
-            last = new Node<>(e, last, null);
+            final Node<T> newLast = new Node<>(e, last, null);
+            last.setNext(newLast);
+            last = newLast;
         }
 
         size++;
